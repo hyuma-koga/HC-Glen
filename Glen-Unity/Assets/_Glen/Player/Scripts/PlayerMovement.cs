@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float boostForce = 20f;
 
+    public bool IsBoosting => isBoosting;
+    private bool isBoosting = false;
     private Rigidbody rb;
 
     private void Awake()
@@ -27,8 +29,13 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 newPosition = new Vector3(x, transform.position.y, z);
         transform.position = Vector3.Lerp(transform.position, newPosition, moveSpeed * Time.deltaTime);
+    }
 
-        if (Input.GetMouseButton(0))
+    private void FixedUpdate()
+    {
+        isBoosting = Input.GetMouseButton(0);
+
+        if (isBoosting)
         {
             BoostFall();
         }

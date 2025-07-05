@@ -765,7 +765,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a4c56028d115cd849a056ce42ce56705, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -815,8 +815,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7931437256979841280}
+  - component: {fileID: 7931437256979841281}
   m_Layer: 0
-  m_Name: Block_0001
+  m_Name: NormalBlock
   m_TagString: NormalBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,6 +839,23 @@ Transform:
   - {fileID: 8038245685632196739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7931437256979841281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303132725821922234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7c7ad2465fae44fbf4c382e0f1a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokenPieceL: {fileID: 6530505133625431543, guid: f36b02a8e87676240b030f2fc6a9898a, type: 3}
+  brokenPieceR: {fileID: 165928965739899441, guid: c81d9d31fc315a64191c754de984b1ec, type: 3}
+  explodeForce: 10
+  torqueForce: 5
+  pieceLifeTime: 3
 --- !u!4 &8038245685632196739
 Transform:
   m_ObjectHideFlags: 0

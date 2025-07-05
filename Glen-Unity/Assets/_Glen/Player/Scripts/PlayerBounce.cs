@@ -8,10 +8,12 @@ public class PlayerBounce : MonoBehaviour
     public bool IsBouncing => isBouncing;
     private bool isBouncing = false;
     private Rigidbody rb;
+    private PlayerMovement movement;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        movement = GetComponent<PlayerMovement>();
         rb.useGravity = true;
     }
 
@@ -19,6 +21,14 @@ public class PlayerBounce : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag(targetTag))
         {
+            return;
+        }
+
+        var block = collision.gameObject.GetComponentInParent<NormalBlock>();
+
+        if (movement != null && movement.IsBoosting && block != null)
+        {
+            block.Break();
             return;
         }
 
