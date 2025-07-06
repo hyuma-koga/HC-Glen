@@ -36,8 +36,6 @@ public class PlayerBounce : MonoBehaviour
 
         if (movement != null && movement.IsBoosting && block != null)
         {
-
-            Debug.Log("ブースト中にGameOverBlock衝突！（RawBoostInput）");
             block.Break();
             return;
         }

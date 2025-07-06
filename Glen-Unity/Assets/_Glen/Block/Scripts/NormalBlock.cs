@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class NormalBlock : MonoBehaviour
 {
-    [SerializeField] private GameOverBlock linkedGameOverBlock;
     [SerializeField] private GameObject    brokenPieceL;
     [SerializeField] private GameObject    brokenPieceR;
     [SerializeField] private float         explodeForce = 20f;
     [SerializeField] private float         torqueForce = 20f;
     [SerializeField] private float         pieceLifeTime = 3f;
+
+    private GameOverBlock                  linkedGameOverBlock;
+
+    public void SetLinkedGameOverBlock(GameOverBlock gameOverBlock)
+    {
+        linkedGameOverBlock = gameOverBlock;
+    }
 
     public void Break()
     {
