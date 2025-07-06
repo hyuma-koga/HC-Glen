@@ -4,15 +4,15 @@ public class BlockFadeOut : MonoBehaviour
 {
     [SerializeField] private float fadeDuration = 1.5f;
 
-    private Renderer blockRenderer;
-    private Material material;
-    private Color originalColor;
-    private float elapsed = 0f;
+    private Renderer               blockRenderer;
+    private Material               material;
+    private Color                  originalColor;
+    private float                  elapsed = 0f;
 
     private void Start()
     {
-        // 子オブジェクトも含めて Renderer を探す
         blockRenderer = GetComponent<Renderer>();
+
         if (blockRenderer == null)
         {
             blockRenderer = GetComponentInChildren<Renderer>();
@@ -25,14 +25,16 @@ public class BlockFadeOut : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Renderer が見つかりません。BlockFadeOut を付けるオブジェクトを確認してください。");
-            enabled = false; // 処理を停止
+            enabled = false;
         }
     }
 
     private void Update()
     {
-        if (material == null) return;
+        if (material == null)
+        {
+            return;
+        }
 
         elapsed += Time.deltaTime;
 

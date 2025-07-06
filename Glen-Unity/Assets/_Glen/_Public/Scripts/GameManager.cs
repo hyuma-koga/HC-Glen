@@ -4,8 +4,7 @@ using UnityEngine.XR;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    private IGameState currentState;
+    private IGameState        currentState;
 
     private void Awake()
     {

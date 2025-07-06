@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform centerObject;
-    [SerializeField] private float radius = 2f;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float boostForce = 20f;
+    [SerializeField] private float     radius = 2f;
+    [SerializeField] private float     moveSpeed = 5f;
+    [SerializeField] private float     boostForce = 20f;
 
-    public bool IsBoosting => isBoosting;
-    private bool isBoosting = false;
-    private Rigidbody rb;
+    public bool                        IsBoosting => isBoosting;
+    private bool                       isBoosting = false;
+    private Rigidbody                  rb;
 
     private void Awake()
     {

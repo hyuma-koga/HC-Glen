@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerBounce : MonoBehaviour
 {
-    [SerializeField] private float bounceForce = 8f;
-    [SerializeField] private string targetTag = "NormalBlock";
+    [SerializeField] private float  bounceForce = 8f;
+    [SerializeField] private string targetTag = "Block";
 
-    public bool IsBouncing => isBouncing;
-    private bool isBouncing = false;
-    private Rigidbody rb;
-    private PlayerMovement movement;
+    public bool                     IsBouncing => isBouncing;
+    private bool                    isBouncing = false;
+    private Rigidbody               rb;
+    private PlayerMovement          movement;
 
     private void Awake()
     {
@@ -19,6 +19,14 @@ public class PlayerBounce : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        var gameOverBlock = collision.gameObject.GetComponentInParent<GameOverBlock>();
+        
+        if (movement != null && movement.IsBoosting && gameOverBlock != null)
+        {
+            gameOverBlock.TriggerGameOver();
+            return;
+        }
+
         if (!collision.gameObject.CompareTag(targetTag))
         {
             return;
@@ -28,6 +36,8 @@ public class PlayerBounce : MonoBehaviour
 
         if (movement != null && movement.IsBoosting && block != null)
         {
+
+            Debug.Log("ブースト中にGameOverBlock衝突！（RawBoostInput）");
             block.Break();
             return;
         }

@@ -7,12 +7,12 @@ public class PlayerSquash : MonoBehaviour
     [SerializeField] private float squashSpeed = 10f;
     [SerializeField] private float returnSpeed = 5f;
 
-    private Vector3 originalScale;
-    private Vector3 squashScale;
-    private Vector3 squashVelocity;
-    private Vector3 returnVelocity;
-    private bool isSquashing = false;
-    private bool isReturning = false;
+    private Vector3                originalScale;
+    private Vector3                squashScale;
+    private Vector3                squashVelocity;
+    private Vector3                returnVelocity;
+    private bool                   isSquashing = false;
+    private bool                   isReturning = false;
 
     private void Start()
     {

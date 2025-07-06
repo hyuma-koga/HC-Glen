@@ -4,9 +4,9 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;        // Player
     public Transform center;        // Tower の中心
-    public float distance = 6f;     // タワーからの距離
-    public float height = 2f;       // 高さオフセット
-    public float fixedAngleX = 30f; // 固定 X 回転角
+    public float     distance = 6f;     // タワーからの距離
+    public float     height = 2f;       // 高さオフセット
+    public float     fixedAngleX = 30f; // 固定 X 回転角
 
     private void LateUpdate()
     {

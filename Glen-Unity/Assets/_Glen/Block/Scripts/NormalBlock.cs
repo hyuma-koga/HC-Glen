@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class NormalBlock : MonoBehaviour
 {
-    [SerializeField] private GameObject brokenPieceL;
-    [SerializeField] private GameObject brokenPieceR;
-    [SerializeField] private float explodeForce = 20f;
-    [SerializeField] private float torqueForce = 20f;
-    [SerializeField] private float pieceLifeTime = 3f;
+    [SerializeField] private GameOverBlock linkedGameOverBlock;
+    [SerializeField] private GameObject    brokenPieceL;
+    [SerializeField] private GameObject    brokenPieceR;
+    [SerializeField] private float         explodeForce = 20f;
+    [SerializeField] private float         torqueForce = 20f;
+    [SerializeField] private float         pieceLifeTime = 3f;
 
     public void Break()
     {
-        Debug.Log("Break");
-
-        // 両方 null でないか確認
         if (brokenPieceL != null && brokenPieceR != null)
         {
             GameObject pieceL = Instantiate(brokenPieceL, transform.position, transform.rotation);
@@ -40,11 +38,14 @@ public class NormalBlock : MonoBehaviour
                 rbR.AddTorque(Random.onUnitSphere * torqueForce, ForceMode.Impulse);
                 Destroy(pieceR, pieceLifeTime);
             }
+
+            if (linkedGameOverBlock != null)
+            {
+                Destroy(linkedGameOverBlock.gameObject);
+            }
         }
 
         gameObject.SetActive(false);
-
-        // 破片の寿命に合わせて最終的にDestroy
         Destroy(gameObject, pieceLifeTime);
     }
 }
