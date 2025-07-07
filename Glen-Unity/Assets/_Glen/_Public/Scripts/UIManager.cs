@@ -4,16 +4,19 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance {  get; private set; }
-
     [SerializeField] private GameObject titleUI;
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject clearUI;
+    [SerializeField] private GameObject progressUI;
     [SerializeField] private Button@@ startButton;
     [SerializeField] private TMP_Text @gameScoreText;
     [SerializeField] private TMP_Text   gameOverScoreText;
     [SerializeField] private TMP_Text   gameOverBestScoreText;
+    [SerializeField] private TMP_Text   currentStageText;
+    [SerializeField] private TMP_Text   nextStageText;
+
+    public static UIManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -61,6 +64,19 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.ChangeState(new PlayState());
     }
 
+    public void UpdateStageTexts(int current, int next)
+    {
+        if (currentStageText != null)
+        {
+            currentStageText.text = "" + current.ToString();
+        }
+
+        if (nextStageText != null)
+        {
+            nextStageText.text = "" + next.ToString();
+        }
+    }
+
     public void ShowTitleUI() => titleUI.SetActive(true);
     public void HideTitleUI() => titleUI.SetActive(false);
 
@@ -72,4 +88,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowClearUI() => clearUI.SetActive(true);
     public void HideClearUI() => clearUI.SetActive(false);
+
+    public void ShowProgressUI() => progressUI.SetActive(true);
+    public void HideProgressUI() => progressUI.SetActive(false);
 }

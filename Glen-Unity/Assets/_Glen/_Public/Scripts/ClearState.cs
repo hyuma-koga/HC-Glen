@@ -6,6 +6,7 @@ public class ClearState : IGameState
     public void Enter()
     {
         UIManager.Instance.ShowClearUI();
+        UIManager.Instance.ShowProgressUI();
     }
 
     public void Update()

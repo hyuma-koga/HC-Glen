@@ -66,4 +66,9 @@ public class StageManager : MonoBehaviour
     {
         return currentStage;
     }
+
+    public int GetMaxStageCount()
+    {
+        return stagePrefabs.Length;
+    }
 }

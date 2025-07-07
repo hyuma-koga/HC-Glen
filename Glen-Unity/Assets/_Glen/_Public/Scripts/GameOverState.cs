@@ -6,6 +6,7 @@ public class GameOverState : IGameState
     {
         Debug.Log("Enter GameOver State");
         UIManager.Instance.ShowGameOverUI();
+        UIManager.Instance.ShowProgressUI();
         UIManager.Instance.UpdateGameOverScore();
         Time.timeScale = 0f;
     }
