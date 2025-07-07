@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Block
       objectReference: {fileID: 0}
+    - target: {fileID: 3654934372253022927, guid: b0bc21859aa827d44a8e8495c5752dd2, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: b0bc21859aa827d44a8e8495c5752dd2, type: 3}
@@ -141,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7c7ad2465fae44fbf4c382e0f1a904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenPieceL: {fileID: 0}
-  brokenPieceR: {fileID: 0}
-  explodeForce: 20
-  torqueForce: 20
+  brokenPieceL: {fileID: 7211015191716894282, guid: 60ed7e31eca9d4f449c4167761dc5d05, type: 3}
+  brokenPieceR: {fileID: 3299059933125383624, guid: f4c91293eef07664b987af2bb71b83fb, type: 3}
+  explodeForce: 10
+  torqueForce: 5
   pieceLifeTime: 3

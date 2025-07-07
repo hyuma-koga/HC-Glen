@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7c7ad2465fae44fbf4c382e0f1a904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedGameOverBlock: {fileID: 5174073413409029806, guid: b722fe619be28d44fa871ec3d5580d0f, type: 3}
   brokenPieceL: {fileID: 6530505133625431543, guid: f36b02a8e87676240b030f2fc6a9898a, type: 3}
   brokenPieceR: {fileID: 165928965739899441, guid: c81d9d31fc315a64191c754de984b1ec, type: 3}
   explodeForce: 10

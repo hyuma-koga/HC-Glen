@@ -47,9 +47,10 @@ MonoBehaviour:
   prefab_NormalBlock_0002: {fileID: 2879613238522947887, guid: 63bc9069ee1656b48936f5ca0414c246, type: 3}
   prefab_GameOverBlock_0002: {fileID: 9109663580907942661, guid: b211ea8eb8580f242b3ef021bb8c161f, type: 3}
   centerObject: {fileID: 2465743104762139850}
-  spawnCount: 20
-  startY: 5
-  intervalY: 5
+  spawnCount: 107
+  startY: 98
+  intervalY: 0.9
+  angleStep: 7
 --- !u!1 &1967229154508279046
 GameObject:
   m_ObjectHideFlags: 0

@@ -2044,6 +2044,7 @@ GameObject:
   - component: {fileID: 1875132690}
   - component: {fileID: 1875132693}
   - component: {fileID: 1875132694}
+  - component: {fileID: 1875132695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2226,6 +2227,19 @@ MonoBehaviour:
   squashAmountX: 1.2
   squashSpeed: 10
   returnSpeed: 5
+--- !u!114 &1875132695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875132685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1aaeba4eb3fd5a4e8a42344ea9811f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPosition: {x: 0, y: 100, z: 0}
 --- !u!1 &2021982215
 GameObject:
   m_ObjectHideFlags: 0

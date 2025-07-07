@@ -13,6 +13,17 @@ public class ClearState : IGameState
     {
         if (Input.GetMouseButtonDown(0))
         {
+            StageManager.Instance.LoadNextStage();
+
+            if (PlayerManager.Instance != null)
+            {
+                PlayerManager.Instance.ResetPlayerPosition();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerManager.Instance ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");
+            }
+
             GameManager.Instance.ChangeState(new TitleState());
         }
     }

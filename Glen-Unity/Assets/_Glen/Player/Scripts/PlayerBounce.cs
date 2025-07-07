@@ -2,30 +2,45 @@ using UnityEngine;
 
 public class PlayerBounce : MonoBehaviour
 {
-    [SerializeField] private float  bounceForce = 8f;
+    [SerializeField] private float bounceForce = 8f;
     [SerializeField] private string targetTag = "Block";
-    [SerializeField] private float  extraFallForce = 30f;
+    [SerializeField] private float extraFallForce = 30f;
 
-    public bool                     IsBouncing => isBouncing;
-    private bool                    isBouncing = false;
-    private Rigidbody               rb;
-    private PlayerMovement          movement;
+    public bool IsBouncing => isBouncing;
+    private bool isBouncing = false;
+
+    private Rigidbody rb;
+    private PlayerMovement movement;
+    private PlayerManager playerManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         movement = GetComponent<PlayerMovement>();
+        playerManager = GetComponent<PlayerManager>();
         rb.useGravity = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         var gameOverBlock = collision.gameObject.GetComponentInParent<GameOverBlock>();
-        
-        if (movement != null && movement.IsBoosting && gameOverBlock != null)
+
+        if (gameOverBlock != null)
         {
-            gameOverBlock.TriggerGameOver();
-            return;
+            if (playerManager != null && playerManager.IsInvincible())
+            {
+                // 無敵ならブロック破壊
+                Destroy(collision.gameObject);
+                Debug.Log("GameOverBlock を無敵モードで破壊！（Collision）");
+                return;
+            }
+
+            // Boosting 中の場合は強制ゲームオーバー
+            if (movement != null && movement.IsBoosting)
+            {
+                gameOverBlock.TriggerGameOver();
+                return;
+            }
         }
 
         if (!collision.gameObject.CompareTag(targetTag))

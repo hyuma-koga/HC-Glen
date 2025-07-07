@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BlockSpawer : MonoBehaviour
+public class BlockSpawer_0001 : MonoBehaviour
 {
     [SerializeField] private GameObject prefab_normalBlock_0001;
     [SerializeField] private GameObject prefab_gameOverBlock_0001;
@@ -20,15 +20,17 @@ public class BlockSpawer : MonoBehaviour
 
             Vector3 posNormal = new Vector3(centerObject.position.x, yPos, centerObject.position.z);
             Quaternion rotNormal = Quaternion.Euler(0f, currentAngle, 0f);
-            var normalObj = Instantiate(prefab_normalBlock_0001, posNormal, rotNormal);
+
+            var normalObj = Instantiate(prefab_normalBlock_0001, posNormal, rotNormal, this.transform);
 
             Vector3 posGameOver = new Vector3(centerObject.position.x, yPos, centerObject.position.z);
             Quaternion rotGameOver = Quaternion.Euler(0f, currentAngle, 0f);
-            var gameOverObj = Instantiate(prefab_gameOverBlock_0001, posGameOver, rotGameOver);
 
-            // NormalBlock ‚É GameOverBlock ‚ð“n‚·
+            var gameOverObj = Instantiate(prefab_gameOverBlock_0001, posGameOver, rotGameOver, this.transform);
+
             var normalBlock = normalObj.GetComponent<NormalBlock>();
             var gameOverBlock = gameOverObj.GetComponent<GameOverBlock>();
+
             if (normalBlock != null && gameOverBlock != null)
             {
                 normalBlock.SetLinkedGameOverBlock(gameOverBlock);

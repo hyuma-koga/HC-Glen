@@ -17,21 +17,28 @@ public class StageManager : MonoBehaviour
 
     public void LoadStage(int index)
     {
-        // 既存ステージがあれば削除
         if (currentStage != null)
         {
+            Debug.Log("StageManager: 既存ステージ（子含む）を削除します → " + currentStage.name);
+
+            // 子もすべて削除
+            foreach (Transform child in currentStage.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
             Destroy(currentStage);
         }
 
-        // 範囲チェック
         if (index >= 0 && index < stagePrefabs.Length)
         {
             currentStage = Instantiate(stagePrefabs[index]);
             currentStageIndex = index;
+            Debug.Log("StageManager: 新しいステージを生成 → " + stagePrefabs[index].name);
         }
         else
         {
-            Debug.LogWarning("ステージインデックスが範囲外です");
+            Debug.LogWarning("StageManager: ステージインデックスが範囲外です");
         }
     }
 
@@ -41,7 +48,6 @@ public class StageManager : MonoBehaviour
         if (nextIndex >= stagePrefabs.Length)
         {
             Debug.Log("すべてのステージをクリアしました！");
-            // 必要ならここで「最終クリア演出」や「タイトルに戻す」など
             GameManager.Instance.ChangeState(new ClearState());
             return;
         }
