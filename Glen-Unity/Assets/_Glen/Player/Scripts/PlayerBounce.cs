@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class PlayerBounce : MonoBehaviour
 {
-    [SerializeField] private float bounceForce = 8f;
+    [SerializeField] private float  bounceForce = 8f;
     [SerializeField] private string targetTag = "Block";
-    [SerializeField] private float extraFallForce = 30f;
+    [SerializeField] private float  extraFallForce = 30f;
 
-    public bool IsBouncing => isBouncing;
-    private bool isBouncing = false;
-
-    private Rigidbody rb;
-    private PlayerMovement movement;
-    private PlayerManager playerManager;
+    public bool                     IsBouncing => isBouncing;
+    private bool                    isBouncing = false;
+    private Rigidbody               rb;
+    private PlayerMovement          movement;
+    private PlayerManager           playerManager;
 
     private void Awake()
     {
@@ -27,15 +26,14 @@ public class PlayerBounce : MonoBehaviour
 
         if (gameOverBlock != null)
         {
+            var player = GetComponent<PlayerManager>();
+
             if (playerManager != null && playerManager.IsInvincible())
             {
-                // 無敵ならブロック破壊
-                Destroy(collision.gameObject);
-                Debug.Log("GameOverBlock を無敵モードで破壊！（Collision）");
+                gameOverBlock.DestroyWithScore();
                 return;
             }
 
-            // Boosting 中の場合は強制ゲームオーバー
             if (movement != null && movement.IsBoosting)
             {
                 gameOverBlock.TriggerGameOver();
@@ -60,8 +58,8 @@ public class PlayerBounce : MonoBehaviour
         {
             rb.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
             isBouncing = true;
-
             var squash = GetComponent<PlayerSquash>();
+
             if (squash != null)
             {
                 squash.TriggerSquash();

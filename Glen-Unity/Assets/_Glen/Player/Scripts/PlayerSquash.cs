@@ -38,7 +38,7 @@ public class PlayerSquash : MonoBehaviour
 
             if (Vector3.Distance(transform.localScale, squashScale) < 0.01f)
             {
-                transform.localScale = squashScale; // ÅI“I‚ÉŠ®‘Sˆê’v
+                transform.localScale = squashScale;
                 isSquashing = false;
                 isReturning = true;
             }
@@ -49,7 +49,7 @@ public class PlayerSquash : MonoBehaviour
 
             if (Vector3.Distance(transform.localScale, originalScale) < 0.01f)
             {
-                transform.localScale = originalScale; // Š®‘Sˆê’v
+                transform.localScale = originalScale;
                 isReturning = false;
             }
         }

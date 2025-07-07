@@ -4,11 +4,11 @@ public class BlockSpawer_0001 : MonoBehaviour
 {
     [SerializeField] private GameObject prefab_normalBlock_0001;
     [SerializeField] private GameObject prefab_gameOverBlock_0001;
-    [SerializeField] private Transform centerObject;
-    [SerializeField] private int spawnCount = 20;
-    [SerializeField] private float startY = 5f;
-    [SerializeField] private float intervalY = 5f;
-    [SerializeField] private float angleStep = 20f;
+    [SerializeField] private Transform  centerObject;
+    [SerializeField] private int        spawnCount = 20;
+    [SerializeField] private float      startY = 5f;
+    [SerializeField] private float      intervalY = 5f;
+    [SerializeField] private float      angleStep = 20f;
 
     private float currentAngle = 0f;
 

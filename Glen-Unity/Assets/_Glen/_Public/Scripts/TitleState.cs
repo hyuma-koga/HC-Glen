@@ -7,7 +7,6 @@ public class TitleState : IGameState
     {
         if (StageManager.Instance.GetCurrentStage() != null)
         {
-            Debug.Log("TitleState: 前回ステージを強制削除");
             Object.Destroy(StageManager.Instance.GetCurrentStage());
         }
 
@@ -22,7 +21,6 @@ public class TitleState : IGameState
 
     public void Exit()
     {
-        Debug.Log("Exit Title State");
         UIManager.Instance.HideTitleUI();
     }
 }

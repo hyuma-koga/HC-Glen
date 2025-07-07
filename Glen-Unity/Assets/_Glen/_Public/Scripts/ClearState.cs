@@ -5,7 +5,6 @@ public class ClearState : IGameState
 {
     public void Enter()
     {
-        Debug.Log("Enter Clear State");
         UIManager.Instance.ShowClearUI();
     }
 
@@ -19,10 +18,6 @@ public class ClearState : IGameState
             {
                 PlayerManager.Instance.ResetPlayerPosition();
             }
-            else
-            {
-                Debug.LogWarning("PlayerManager.Instance ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");
-            }
 
             GameManager.Instance.ChangeState(new TitleState());
         }
@@ -30,7 +25,6 @@ public class ClearState : IGameState
 
     public void Exit()
     {
-        Debug.Log("Exit Clear State");
         UIManager.Instance.HideClearUI();
     }
 }

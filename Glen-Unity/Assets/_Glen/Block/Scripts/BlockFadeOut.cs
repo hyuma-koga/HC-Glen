@@ -37,7 +37,6 @@ public class BlockFadeOut : MonoBehaviour
         }
 
         elapsed += Time.deltaTime;
-
         float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
         material.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
 

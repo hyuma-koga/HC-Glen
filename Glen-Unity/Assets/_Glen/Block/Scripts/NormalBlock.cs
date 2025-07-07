@@ -4,15 +4,16 @@ public class NormalBlock : MonoBehaviour
 {
     [SerializeField] private GameObject brokenPieceL;
     [SerializeField] private GameObject brokenPieceR;
-    [SerializeField] private float explodeForce = 20f;
-    [SerializeField] private float torqueForce = 20f;
-    [SerializeField] private float pieceLifeTime = 3f;
+    [SerializeField] private float      explodeForce = 20f;
+    [SerializeField] private float      torqueForce = 20f;
+    [SerializeField] private float      pieceLifeTime = 3f;
 
-    private GameOverBlock linkedGameOverBlock;
+    private GameOverBlock               linkedGameOverBlock;
 
     public void SetLinkedGameOverBlock(GameOverBlock gameOverBlock)
     {
         linkedGameOverBlock = gameOverBlock;
+        gameOverBlock.SetLinkedNormalBlock(this);
     }
 
     public void Break()
@@ -21,7 +22,6 @@ public class NormalBlock : MonoBehaviour
         {
             GameObject pieceL = Instantiate(brokenPieceL, transform.position, transform.rotation);
             GameObject pieceR = Instantiate(brokenPieceR, transform.position, transform.rotation);
-
             Rigidbody rbL = pieceL.GetComponent<Rigidbody>();
             Rigidbody rbR = pieceR.GetComponent<Rigidbody>();
 
@@ -49,6 +49,10 @@ public class NormalBlock : MonoBehaviour
             {
                 Destroy(linkedGameOverBlock.gameObject);
             }
+
+            ScoreManager.Instance.AddScore(1);
+            gameObject.SetActive(false);
+            Destroy(gameObject, pieceLifeTime);
         }
 
         gameObject.SetActive(false);

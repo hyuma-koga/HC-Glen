@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject clearUI;
-    [SerializeField] private Button startButton;
+    [SerializeField] private ButtonÅ@Å@ startButton;
+    [SerializeField] private TMP_Text Å@gameScoreText;
+    [SerializeField] private TMP_Text   gameOverScoreText;
+    [SerializeField] private TMP_Text   gameOverBestScoreText;
 
     private void Awake()
     {
@@ -28,6 +32,27 @@ public class UIManager : MonoBehaviour
         if (startButton != null)
         {
             startButton.onClick.AddListener(OnStartButtonClicked);
+        }
+    }
+
+    private void Update()
+    {
+        if (gameScoreText != null)
+        {
+            gameScoreText.text = "" + ScoreManager.Instance.CurrentScore;
+        }
+    }
+
+    public void UpdateGameOverScore()
+    {
+        if (gameOverScoreText != null)
+        {
+            gameOverScoreText.text = "" + ScoreManager.Instance.CurrentScore;
+        }
+
+        if (gameOverBestScoreText != null)
+        {
+            gameOverBestScoreText.text = "" + ScoreManager.Instance.BestScore;
         }
     }
 

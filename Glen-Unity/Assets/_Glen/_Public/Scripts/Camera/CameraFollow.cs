@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;        // Player
-    public Transform center;        // CenterMarker
-    public float distance = 6f;
-    public float height = 2f;
-    public float fixedAngleX = 30f;
+    public Transform target;
+    public Transform center;
+    public float     distance = 6f;
+    public float     height = 2f;
+    public float     fixedAngleX = 30f;
 
     private void LateUpdate()
     {
-        // center ‚ª null ‚È‚çÄ’Tõ
         if (center == null && StageManager.Instance != null)
         {
             GameObject stageObj = StageManager.Instance.GetCurrentStage();
+
             if (stageObj != null)
             {
                 Transform foundCenter = stageObj.transform.Find("CenterMarker");
+
                 if (foundCenter != null)
                 {
                     center = foundCenter;
-                    Debug.Log("CameraFollow: CenterMarker ‚ğÄæ“¾‚µ‚Ü‚µ‚½I");
                 }
             }
         }
