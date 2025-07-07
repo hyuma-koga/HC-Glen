@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -6,15 +7,22 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private Vector3 initialPosition;
 
+    [Header("Invincible Settings")]
+    [SerializeField] private float invincibleDuration = 5f;
+    [SerializeField] private float pressThreshold = 5f;
+
+    [Header("UI")]
+    [SerializeField] private Image invincibleMeterImage;
+    [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private Color invincibleColor = Color.red;
+
     private Rigidbody rb;
 
     private bool isInvincible = false;
-    private float invincibleDuration = 5f;
     private float invincibleTimer = 0f;
 
     private float pressTimer = 0f;
-    private float pressThreshold = 5f;
-    private bool canChargeInvincible = true; // ← 新フラグ
+    private bool canChargeInvincible = true;
 
     private void Awake()
     {
@@ -28,11 +36,16 @@ public class PlayerManager : MonoBehaviour
 
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody>();
+
+        if (invincibleMeterImage != null)
+        {
+            invincibleMeterImage.color = normalColor;
+            invincibleMeterImage.fillAmount = 0f;
+        }
     }
 
     private void Update()
     {
-        // 無敵発動条件
         if (Input.GetMouseButton(0))
         {
             if (canChargeInvincible)
@@ -42,7 +55,16 @@ public class PlayerManager : MonoBehaviour
                 if (!isInvincible && pressTimer >= pressThreshold)
                 {
                     ActivateInvincible();
-                    canChargeInvincible = false; // ← 発動後は一度無効にする
+                    canChargeInvincible = false;
+                }
+
+                // UI更新（チャージ中）
+                float fill = Mathf.Clamp01(pressTimer / pressThreshold);
+                if (invincibleMeterImage != null)
+                {
+                    invincibleMeterImage.fillAmount = fill;
+                    invincibleMeterImage.fillClockwise = true;
+                    invincibleMeterImage.color = normalColor; // ← チャージ中は通常色
                 }
             }
         }
@@ -50,20 +72,31 @@ public class PlayerManager : MonoBehaviour
         {
             pressTimer = 0f;
 
-            // ボタンを離したら再チャージできるようにする
             if (!isInvincible)
             {
                 canChargeInvincible = true;
+                if (invincibleMeterImage != null)
+                {
+                    invincibleMeterImage.fillAmount = 0f;
+                }
             }
         }
 
-        // 無敵時間管理
         if (isInvincible)
         {
             invincibleTimer -= Time.unscaledDeltaTime;
             if (invincibleTimer <= 0f)
             {
                 DeactivateInvincible();
+            }
+
+            // UI更新（無敵中）
+            float fill = Mathf.Clamp01(invincibleTimer / invincibleDuration);
+            if (invincibleMeterImage != null)
+            {
+                invincibleMeterImage.fillAmount = fill;
+                invincibleMeterImage.fillClockwise = false;
+                invincibleMeterImage.color = invincibleColor; // ← 無敵中は赤
             }
         }
     }
@@ -73,6 +106,11 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("無敵モード発動！");
         isInvincible = true;
         invincibleTimer = invincibleDuration;
+
+        if (invincibleMeterImage != null)
+        {
+            invincibleMeterImage.color = invincibleColor;
+        }
     }
 
     private void DeactivateInvincible()
@@ -80,7 +118,13 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("無敵モード終了");
         isInvincible = false;
         pressTimer = 0f;
-        canChargeInvincible = true; // ← 無敵終了後はチャージ可能に戻す
+        canChargeInvincible = true;
+
+        if (invincibleMeterImage != null)
+        {
+            invincibleMeterImage.fillAmount = 0f;
+            invincibleMeterImage.color = normalColor; // ← 無敵終了後に色を戻す
+        }
     }
 
     public bool IsInvincible()
@@ -105,5 +149,11 @@ public class PlayerManager : MonoBehaviour
         invincibleTimer = 0f;
         pressTimer = 0f;
         canChargeInvincible = true;
+
+        if (invincibleMeterImage != null)
+        {
+            invincibleMeterImage.fillAmount = 0f;
+            invincibleMeterImage.color = normalColor;
+        }
     }
 }
