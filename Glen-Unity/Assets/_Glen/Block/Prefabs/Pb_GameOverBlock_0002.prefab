@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80895177f1fcc9f4882aec39407d0481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedNormalBlock: {fileID: 5570179701667130039, guid: 63bc9069ee1656b48936f5ca0414c246, type: 3}
   brokenPieceL: {fileID: 7211015191716894282, guid: 60ed7e31eca9d4f449c4167761dc5d05, type: 3}
   brokenPieceR: {fileID: 3299059933125383624, guid: f4c91293eef07664b987af2bb71b83fb, type: 3}
+  splashPrefab: {fileID: 2620484677658428088, guid: 18e8664690a97194fa4b7eafc7d2804a, type: 3}
   explodeForce: 10
   torqueForce: 5
   pieceLifeTime: 3

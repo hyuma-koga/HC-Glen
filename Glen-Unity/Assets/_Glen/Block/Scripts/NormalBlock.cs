@@ -4,6 +4,7 @@ public class NormalBlock : MonoBehaviour
 {
     [SerializeField] private GameObject brokenPieceL;
     [SerializeField] private GameObject brokenPieceR;
+    [SerializeField] private GameObject splashPrefab;
     [SerializeField] private float      explodeForce = 20f;
     [SerializeField] private float      torqueForce = 20f;
     [SerializeField] private float      pieceLifeTime = 3f;
@@ -14,6 +15,15 @@ public class NormalBlock : MonoBehaviour
     {
         linkedGameOverBlock = gameOverBlock;
         gameOverBlock.SetLinkedNormalBlock(this);
+    }
+
+    public void CreateSplash(Vector3 position)
+    {
+        if (splashPrefab != null)
+        {
+            var splash = Instantiate(splashPrefab, position, Quaternion.Euler(90f, 0f, 0f), transform);
+            Destroy(splash, 2f);
+        }
     }
 
     public void Break()

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenPieceL: {fileID: 6530505133625431543, guid: f36b02a8e87676240b030f2fc6a9898a, type: 3}
   brokenPieceR: {fileID: 165928965739899441, guid: c81d9d31fc315a64191c754de984b1ec, type: 3}
+  splashPrefab: {fileID: 2620484677658428088, guid: 18e8664690a97194fa4b7eafc7d2804a, type: 3}
   explodeForce: 10
   torqueForce: 5
   pieceLifeTime: 3

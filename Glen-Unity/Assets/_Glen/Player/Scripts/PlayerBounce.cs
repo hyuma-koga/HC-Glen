@@ -64,6 +64,10 @@ public class PlayerBounce : MonoBehaviour
             {
                 squash.TriggerSquash();
             }
+            if (block != null)
+            {
+                block.CreateSplash(collision.contacts[0].point);
+            }
         }
     }
 

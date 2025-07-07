@@ -4,9 +4,10 @@ public class GameOverBlock : MonoBehaviour
 {
     [SerializeField] private GameObject brokenPieceL;
     [SerializeField] private GameObject brokenPieceR;
-    [SerializeField] private float      explodeForce = 20f;
-    [SerializeField] private float      torqueForce = 20f;
-    [SerializeField] private float      pieceLifeTime = 3f;
+    [SerializeField] private GameObject splashPrefab; // Åöí«â¡
+    [SerializeField] private float explodeForce = 20f;
+    [SerializeField] private float torqueForce = 20f;
+    [SerializeField] private float pieceLifeTime = 3f;
 
     private NormalBlock linkedNormalBlock;
 
@@ -41,6 +42,15 @@ public class GameOverBlock : MonoBehaviour
     {
         ScoreManager.Instance.AddScore(1);
         Break();
+    }
+
+    public void CreateSplash(Vector3 position)
+    {
+        if (splashPrefab != null)
+        {
+            var splash = Instantiate(splashPrefab, position, Quaternion.Euler(90f, 0f, 0f), transform);
+            Destroy(splash, 2f);
+        }
     }
 
     private void Break()
