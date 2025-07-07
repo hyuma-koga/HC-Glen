@@ -15,10 +15,24 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
+
+        if (centerObject != null)
+        {
+            centerObject = transform.Find("CenterMarker");
+            if (centerObject == null)
+            {
+                Debug.LogError("CenterMarker‚ª‚È‚¢");
+            }
+        }
     }
 
     private void Update()
     {
+        if (!(GameManager.Instance.CurrentState is PlayState))
+        {
+            return;
+        }
+
         float mouseX = Input.mousePosition.x / Screen.width;
         float angle = mouseX * Mathf.PI * 2f;
 
@@ -33,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!(GameManager.Instance.CurrentState is PlayState))
+        {
+            return;
+        }
+
         isBoosting = Input.GetMouseButton(0);
 
         if (isBoosting)

@@ -11,7 +11,7 @@ public class ClearState : IGameState
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
             GameManager.Instance.ChangeState(new TitleState());
         }

@@ -6,12 +6,14 @@ public class GameOverState : IGameState
     {
         Debug.Log("Enter GameOver State");
         UIManager.Instance.ShowGameOverUI();
+        Time.timeScale = 0f; // © ƒQ[ƒ€‚ğ’â~
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
+            Time.timeScale = 1f; // ŠÔ‚ğ–ß‚·
             GameManager.Instance.ChangeState(new TitleState());
         }
     }

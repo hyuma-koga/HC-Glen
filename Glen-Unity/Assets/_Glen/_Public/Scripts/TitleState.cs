@@ -5,16 +5,13 @@ public class TitleState : IGameState
 {
     public void Enter()
     {
-        Debug.Log("Enter Title State");
+        StageManager.Instance.LoadStage(StageManager.Instance.GetCurrentStageIndex());
         UIManager.Instance.ShowTitleUI();
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Instance.ChangeState(new PlayState());
-        }
+        
     }
 
     public void Exit()

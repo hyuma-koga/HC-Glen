@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject clearUI;
+    [SerializeField] private Button startButton;
 
     private void Awake()
     {
@@ -19,6 +21,19 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        if (startButton != null)
+        {
+            startButton.onClick.AddListener(OnStartButtonClicked);
+        }
+    }
+
+    public void OnStartButtonClicked()
+    {
+        GameManager.Instance.ChangeState(new PlayState());
     }
 
     public void ShowTitleUI() => titleUI.SetActive(true);

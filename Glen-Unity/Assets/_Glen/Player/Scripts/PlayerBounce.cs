@@ -4,6 +4,7 @@ public class PlayerBounce : MonoBehaviour
 {
     [SerializeField] private float  bounceForce = 8f;
     [SerializeField] private string targetTag = "Block";
+    [SerializeField] private float  extraFallForce = 30f;
 
     public bool                     IsBouncing => isBouncing;
     private bool                    isBouncing = false;
@@ -55,6 +56,11 @@ public class PlayerBounce : MonoBehaviour
 
     private void Update()
     {
+        if (rb.linearVelocity.y < 0f)
+        {
+            rb.AddForce(Vector3.down * extraFallForce, ForceMode.Acceleration);
+        }
+
         if (isBouncing && rb.linearVelocity.y <= 0f)
         {
             isBouncing = false;

@@ -6,19 +6,11 @@ public class PlayState : IGameState
     {
         Debug.Log("Enter Play State");
         UIManager.Instance.ShowGameUI();
+        Time.timeScale = 1;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GameManager.Instance.ChangeState(new GameOverState());
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            GameManager.Instance.ChangeState(new ClearState());
-        }
     }
 
     public void Exit()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NormalBlock
   - Block
+  - Stage
   layers:
   - Default
   - TransparentFX
