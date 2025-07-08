@@ -7946,7 +7946,11 @@ MonoBehaviour:
   invincibleFlameEffect: {fileID: 1463240484}
   radius: 2
   moveSpeed: 5
-  boostForce: 35
+  boostForce: 30
+  invincibleForceMultiplier: 0.3
+  normalScale: {x: 0.5, y: 0.5, z: 0.5}
+  fallingScale: {x: 0.5, y: 1.4, z: 0.5}
+  scaleLerpSpeed: 5
 --- !u!114 &1875132691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8030,8 +8034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPosition: {x: 0, y: 100, z: 0}
-  invincibleDuration: 5
-  pressThreshold: 5
+  invincibleDuration: 2.5
+  pressThreshold: 2.5
   invincibleMeterImage: {fileID: 1809562439}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   invincibleColor: {r: 1, g: 0, b: 0, a: 1}

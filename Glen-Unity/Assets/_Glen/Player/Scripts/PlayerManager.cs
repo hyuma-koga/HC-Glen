@@ -4,18 +4,18 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Vector3 initialPosition;
-    [SerializeField] private float invincibleDuration = 5f;
-    [SerializeField] private float pressThreshold = 5f;
-    [SerializeField] private Image invincibleMeterImage;
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color invincibleColor = Color.red;
+    [SerializeField] private float   invincibleDuration = 5f;
+    [SerializeField] private float   pressThreshold = 5f;
+    [SerializeField] private Image   invincibleMeterImage;
+    [SerializeField] private Color   normalColor = Color.white;
+    [SerializeField] private Color   invincibleColor = Color.red;
 
-    public static PlayerManager Instance { get; private set; }
-    private Rigidbody           rb;
-    private bool                isInvincible = false;
-    private float               invincibleTimer = 0f;
-    private float               pressTimer = 0f;
-    private bool                canChargeInvincible = true;
+    public static PlayerManager      Instance { get; private set; }
+    private Rigidbody                rb;
+    private bool                     isInvincible = false;
+    private float                    invincibleTimer = 0f;
+    private float                    pressTimer = 0f;
+    private bool                     canChargeInvincible = true;
 
     private void Awake()
     {

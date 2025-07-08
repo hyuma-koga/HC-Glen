@@ -27,7 +27,6 @@ public class BlockSpawer_0002 : MonoBehaviour
             Quaternion rotGameOver = Quaternion.Euler(0f, currentAngle, 0f);
 
             var gameOverObj = Instantiate(prefab_GameOverBlock_0002, posGameOver, rotGameOver, this.transform);
-
             var normalBlock = normalObj.GetComponent<NormalBlock>();
             var gameOverBlock = gameOverObj.GetComponent<GameOverBlock>();
 
